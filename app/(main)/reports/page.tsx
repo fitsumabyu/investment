@@ -2,6 +2,7 @@ import { Suspense } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { Input } from "@/components/ui/input"
 import { 
   BarChart, 
   TrendingUp, 
@@ -10,27 +11,28 @@ import {
   Filter,
   Calendar,
   FileText,
-  PieChart
+  PieChart,
+  Search
 } from "lucide-react"
 
 function ReportsSkeleton() {
   return (
-    <div className="container-mobile">
-      <div className="animate-pulse space-y-6">
+    <div className="mobile-section">
+      <div className="animate-pulse space-y-4">
         <div className="h-8 bg-muted rounded-lg w-1/3"></div>
-        <div className="grid-stats">
+        <div className="mobile-grid-stats">
           {[...Array(4)].map((_, i) => (
-            <div key={i} className="card-modern p-6">
+            <div key={i} className="mobile-card p-4 md:p-6">
               <div className="h-4 bg-muted rounded w-1/2 mb-2"></div>
               <div className="h-8 bg-muted rounded w-3/4"></div>
             </div>
           ))}
         </div>
-        <div className="grid-cards">
+        <div className="mobile-grid md:grid-cards">
           {[...Array(2)].map((_, i) => (
-            <div key={i} className="card-modern p-6">
+            <div key={i} className="mobile-card p-4 md:p-6">
               <div className="h-6 bg-muted rounded w-1/4 mb-4"></div>
-              <div className="h-32 bg-muted rounded"></div>
+              <div className="h-32 bg-muted rounded-xl md:rounded-lg"></div>
             </div>
           ))}
         </div>
@@ -41,20 +43,27 @@ function ReportsSkeleton() {
 
 async function ReportsContent() {
   return (
-    <div className="container-mobile">
+    <div className="mobile-content">
       {/* Header */}
-      <div className="section-spacing">
+      <div className="mobile-section">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-hero">Reports</h1>
-            <p className="text-subtitle">Analytics and comprehensive reporting</p>
+            <h1 className="mobile-text-hero">Reports</h1>
+            <p className="mobile-text-subtitle">Analytics and comprehensive reporting</p>
           </div>
           <div className="flex items-center gap-2">
-            <Button variant="outline" size="sm" className="btn-secondary">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                placeholder="Search..."
+                className="mobile-input pl-8 w-48 md:w-64"
+              />
+            </div>
+            <Button variant="outline" size="sm" className="mobile-btn-secondary md:btn-secondary">
               <Filter className="h-4 w-4 mr-2" />
               Filter
             </Button>
-            <Button variant="outline" size="sm" className="btn-secondary">
+            <Button variant="outline" size="sm" className="mobile-btn-secondary md:btn-secondary">
               <Download className="h-4 w-4 mr-2" />
               Export
             </Button>
@@ -63,8 +72,8 @@ async function ReportsContent() {
       </div>
 
       {/* Report Metrics */}
-      <div className="section-spacing">
-        <div className="grid-stats">
+      <div className="mobile-section">
+        <div className="mobile-grid-stats">
           <Card className="card-elevated">
             <CardHeader className="pb-3">
               <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">

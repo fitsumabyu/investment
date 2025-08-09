@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className} suppressHydrationWarning>
+      <body className={`${inter.className} mobile-scroll`} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -32,11 +32,13 @@ export default function RootLayout({
         >
           <AuthProvider initialUserRole="personal">
             <SidebarProvider defaultOpen={false}>
-              <div className="flex min-h-screen">
+              <div className="flex min-h-screen bg-background">
                 <AppSidebar />
-                <main className="flex-1 flex flex-col">
+                <main className="flex-1 flex flex-col md:ml-0">
                   <PageTransition>
-                    {children}
+                    <div className="pt-4 md:pt-0">
+                      {children}
+                    </div>
                   </PageTransition>
                 </main>
               </div>

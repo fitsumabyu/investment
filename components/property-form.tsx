@@ -42,37 +42,37 @@ export function PropertyForm() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="container-mobile"
+      className="mobile-content"
     >
       {/* Header */}
-      <div className="section-spacing">
+      <div className="mobile-section">
         <div className="flex items-center gap-4">
-          <Button variant="ghost" size="sm" onClick={() => router.back()} className="btn-ghost">
+          <Button variant="ghost" size="sm" onClick={() => router.back()} className="mobile-btn-ghost">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back
           </Button>
           <div>
-            <h1 className="text-hero">Add New Property</h1>
-            <p className="text-subtitle">Register a new investment property</p>
+            <h1 className="mobile-text-hero">Add New Property</h1>
+            <p className="mobile-text-subtitle">Register a new investment property</p>
           </div>
         </div>
       </div>
 
       {/* Form */}
-      <div className="section-spacing">
-        <Card className="card-elevated">
+      <div className="mobile-section">
+        <Card className="mobile-card-elevated">
           <CardHeader>
-            <CardTitle className="text-title">Property Details</CardTitle>
-            <CardDescription>
+            <CardTitle className="mobile-text-title">Property Details</CardTitle>
+            <CardDescription className="mobile-text-caption">
               Enter the details of your investment property
             </CardDescription>
           </CardHeader>
           <CardContent>
             <form action={handleSubmit} className="mobile-form">
-              <div className="grid-cards">
+              <div className="mobile-grid">
                 {/* Basic Information */}
-                <div className="card-spacing">
-                  <h3 className="text-lg font-semibold mb-4">Basic Information</h3>
+                <div className="mobile-form-group">
+                  <h3 className="mobile-text-subtitle mb-4">Basic Information</h3>
                   
                   <div className="mobile-form-group">
                     <Label htmlFor="name">Property Name</Label>
@@ -80,7 +80,7 @@ export function PropertyForm() {
                       id="name"
                       name="name"
                       placeholder="Enter property name"
-                      className="input-modern"
+                      className="mobile-input"
                       required
                     />
                   </div>
@@ -88,7 +88,7 @@ export function PropertyForm() {
                   <div className="mobile-form-group">
                     <Label htmlFor="type">Property Type</Label>
                     <Select name="type" required>
-                      <SelectTrigger className="input-modern">
+                      <SelectTrigger className="mobile-input">
                         <SelectValue placeholder="Select property type" />
                       </SelectTrigger>
                       <SelectContent>
@@ -105,26 +105,25 @@ export function PropertyForm() {
                     <Textarea
                       id="address"
                       name="address"
-                      placeholder="Enter full address"
-                      className="input-modern"
-                      rows={3}
+                      placeholder="Enter property address"
+                      className="mobile-input"
                       required
                     />
                   </div>
                 </div>
 
                 {/* Financial Information */}
-                <div className="card-spacing">
-                  <h3 className="text-lg font-semibold mb-4">Financial Details</h3>
+                <div className="mobile-form-group">
+                  <h3 className="mobile-text-subtitle mb-4">Financial Information</h3>
                   
                   <div className="mobile-form-group">
-                    <Label htmlFor="purchasePrice">Property Value</Label>
+                    <Label htmlFor="purchasePrice">Purchase Price</Label>
                     <Input
                       id="purchasePrice"
                       name="purchasePrice"
                       type="number"
-                      placeholder="Enter property value"
-                      className="input-modern"
+                      placeholder="Enter purchase price"
+                      className="mobile-input"
                       required
                     />
                   </div>
@@ -136,7 +135,7 @@ export function PropertyForm() {
                       name="rent"
                       type="number"
                       placeholder="Enter monthly rent"
-                      className="input-modern"
+                      className="mobile-input"
                       required
                     />
                   </div>
@@ -148,54 +147,38 @@ export function PropertyForm() {
                       name="yearBuilt"
                       type="number"
                       placeholder="Enter year built"
-                      className="input-modern"
-                      required
+                      className="mobile-input"
                     />
                   </div>
-                </div>
 
-                {/* Additional Details */}
-                <div className="card-spacing">
-                  <h3 className="text-lg font-semibold mb-4">Additional Details</h3>
-                  
                   <div className="mobile-form-group">
                     <Label htmlFor="status">Status</Label>
                     <Select name="status" required>
-                      <SelectTrigger className="input-modern">
+                      <SelectTrigger className="mobile-input">
                         <SelectValue placeholder="Select status" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="Active">Active</SelectItem>
-                        <SelectItem value="Pending">Pending</SelectItem>
-                        <SelectItem value="Sold">Sold</SelectItem>
+                        <SelectItem value="active">Active</SelectItem>
+                        <SelectItem value="pending">Pending</SelectItem>
+                        <SelectItem value="sold">Sold</SelectItem>
+                        <SelectItem value="maintenance">Maintenance</SelectItem>
                       </SelectContent>
                     </Select>
-                  </div>
-
-                  <div className="mobile-form-group">
-                    <Label htmlFor="description">Description</Label>
-                    <Textarea
-                      id="description"
-                      name="description"
-                      placeholder="Enter property description"
-                      className="input-modern"
-                      rows={3}
-                    />
                   </div>
                 </div>
               </div>
 
-              {/* Action Buttons */}
-              <div className="flex items-center gap-4 pt-6">
-                <Button
-                  type="submit"
+              {/* Submit Button */}
+              <div className="mobile-form-group pt-4">
+                <Button 
+                  type="submit" 
                   disabled={isLoading}
-                  className="btn-modern flex-1"
+                  className="mobile-btn-primary"
                 >
                   {isLoading ? (
                     <>
                       <LoadingSpinner />
-                      <span className="ml-2">Saving...</span>
+                      Saving...
                     </>
                   ) : (
                     <>
@@ -204,26 +187,17 @@ export function PropertyForm() {
                     </>
                   )}
                 </Button>
-                
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() => router.push('/dashboard')}
-                  className="btn-secondary"
-                >
-                  Cancel
-                </Button>
               </div>
 
-              {/* Success/Error Message */}
+              {/* Message */}
               {message && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className={`mt-4 p-4 rounded-lg border ${
+                  className={`mt-4 p-4 rounded-xl ${
                     message.type === 'success' 
-                      ? 'status-success' 
-                      : 'bg-destructive/10 text-destructive border-destructive/20'
+                      ? 'mobile-status-success' 
+                      : 'bg-destructive/10 text-destructive border border-destructive/20'
                   }`}
                 >
                   {message.text}

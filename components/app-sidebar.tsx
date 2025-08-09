@@ -117,7 +117,7 @@ function MobileNav() {
       animate={{ opacity: 1, y: 0 }}
       className="mobile-nav"
     >
-      <div className="flex items-center justify-around py-3 px-4">
+      <div className="flex items-center justify-around py-2 px-2">
         {navItems.slice(0, 4).map((item) => {
           const Icon = item.icon
           const isActive = pathname === item.href
@@ -126,19 +126,19 @@ function MobileNav() {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex flex-col items-center py-2 px-3 rounded-xl transition-all duration-200 ${
+              className={`flex flex-col items-center py-2 px-2 rounded-xl transition-all duration-200 min-w-0 flex-1 ${
                 isActive 
                   ? "text-primary bg-primary/10" 
                   : "text-muted-foreground hover:text-foreground hover:bg-accent"
               }`}
             >
-              <div className="relative">
-                <Icon className="h-5 w-5 mb-1" />
+              <div className="relative mb-1">
+                <Icon className="h-5 w-5" />
                 {item.hasDot && (
                   <div className="absolute -top-1 -right-1 h-2 w-2 bg-yellow-400 rounded-full"></div>
                 )}
               </div>
-              <span className="text-xs font-medium">{item.title}</span>
+              <span className="text-xs font-medium truncate text-center">{item.title}</span>
             </Link>
           )
         })}
@@ -155,24 +155,24 @@ function DesktopSidebar() {
     <motion.div
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
-      className={`hidden md:flex flex-col h-screen bg-white border-r border-border/50 ${
+      className={`hidden md:flex flex-col h-screen bg-background border-r border-border ${
         isExpanded ? "w-72" : "w-16"
       } transition-all duration-300`}
     >
-      {/* Header - Dark Blue */}
-      <div className="flex items-center justify-between p-4 bg-blue-900 text-white">
+      {/* Header - Theme-aware */}
+      <div className="flex items-center justify-between p-4 bg-primary text-primary-foreground">
         {isExpanded ? (
           <Link href="/dashboard" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
-            <div className="w-8 h-8 rounded-lg bg-blue-700 flex items-center justify-center">
-              <Layers className="h-5 w-5 text-white" />
+            <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
+              <Layers className="h-5 w-5 text-primary-foreground" />
             </div>
             <div>
               <span className="font-bold text-lg">InvestmentApp</span>
             </div>
           </Link>
         ) : (
-          <Link href="/dashboard" className="w-8 h-8 rounded-lg bg-blue-700 flex items-center justify-center mx-auto hover:opacity-80 transition-opacity">
-            <Layers className="h-5 w-5 text-white" />
+          <Link href="/dashboard" className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center mx-auto hover:opacity-80 transition-opacity">
+            <Layers className="h-5 w-5 text-primary-foreground" />
           </Link>
         )}
       </div>
@@ -181,7 +181,7 @@ function DesktopSidebar() {
       <nav className="flex-1 p-4 space-y-2 overflow-y-auto scrollbar-modern">
         {isExpanded && (
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-gray-800">Analytics</h2>
+            <h2 className="text-lg font-semibold text-foreground">Analytics</h2>
             <Button 
               variant="ghost" 
               size="sm" 
@@ -205,8 +205,8 @@ function DesktopSidebar() {
                 onClick={() => !isExpanded && setIsExpanded(true)}
                 className={`group flex items-center space-x-3 px-3 py-3 rounded-xl transition-all duration-200 ${
                   isActive 
-                    ? "bg-blue-600 text-white shadow-sm" 
-                    : "text-gray-700 hover:text-gray-900 hover:bg-gray-100"
+                    ? "bg-primary text-primary-foreground shadow-sm" 
+                    : "text-muted-foreground hover:text-foreground hover:bg-accent"
                 }`}
               >
                 <div className="relative flex-shrink-0">
@@ -218,11 +218,11 @@ function DesktopSidebar() {
                 {isExpanded && (
                   <div className="flex-1 min-w-0">
                     <span className="font-medium text-sm">{item.title}</span>
-                    <p className="text-xs text-gray-500 truncate">{item.description}</p>
+                    <p className="text-xs text-muted-foreground truncate">{item.description}</p>
                   </div>
                 )}
                 {isExpanded && isActive && (
-                  <ChevronRight className="h-4 w-4 text-white" />
+                  <ChevronRight className="h-4 w-4 text-primary-foreground" />
                 )}
               </Link>
             )
@@ -256,14 +256,14 @@ function MobileSidebarOverlay() {
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
             transition={{ type: "spring", damping: 20, stiffness: 300 }}
-            className="mobile-sidebar z-50 bg-white"
+            className="mobile-sidebar z-50 bg-background"
           >
             <div className="flex flex-col h-full">
               {/* Header */}
-              <div className="flex items-center justify-between p-4 bg-blue-900 text-white">
+              <div className="flex items-center justify-between p-4 bg-primary text-primary-foreground">
                 <Link href="/dashboard" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
-                  <div className="w-8 h-8 rounded-lg bg-blue-700 flex items-center justify-center">
-                    <Layers className="h-5 w-5 text-white" />
+                  <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
+                    <Layers className="h-5 w-5 text-primary-foreground" />
                   </div>
                   <div>
                     <span className="font-bold text-lg">InvestmentApp</span>
@@ -273,7 +273,7 @@ function MobileSidebarOverlay() {
                   variant="ghost"
                   size="sm"
                   onClick={() => setOpenMobile(false)}
-                  className="text-white hover:bg-blue-800"
+                  className="text-primary-foreground hover:bg-primary/20"
                 >
                   <X className="h-4 w-4" />
                 </Button>
@@ -282,7 +282,7 @@ function MobileSidebarOverlay() {
               {/* Navigation */}
               <nav className="flex-1 p-4 space-y-2 overflow-y-auto scrollbar-modern">
                 <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-lg font-semibold text-gray-800">Analytics</h2>
+                  <h2 className="text-lg font-semibold text-foreground">Analytics</h2>
                   <Button variant="ghost" size="sm" className="p-1">
                     <ChevronLeft className="h-4 w-4" />
                   </Button>
@@ -300,8 +300,8 @@ function MobileSidebarOverlay() {
                         onClick={() => setOpenMobile(false)}
                         className={`group flex items-center space-x-3 px-3 py-3 rounded-xl transition-all duration-200 ${
                           isActive 
-                            ? "bg-blue-600 text-white shadow-sm" 
-                            : "text-gray-700 hover:text-gray-900 hover:bg-gray-100"
+                            ? "bg-primary text-primary-foreground shadow-sm" 
+                            : "text-muted-foreground hover:text-foreground hover:bg-accent"
                         }`}
                       >
                         <div className="relative">
@@ -312,10 +312,10 @@ function MobileSidebarOverlay() {
                         </div>
                         <div className="flex-1 min-w-0">
                           <span className="font-medium text-sm">{item.title}</span>
-                          <p className="text-xs text-gray-500 truncate">{item.description}</p>
+                          <p className="text-xs text-muted-foreground truncate">{item.description}</p>
                         </div>
                         {isActive && (
-                          <ChevronRight className="h-4 w-4 text-white" />
+                          <ChevronRight className="h-4 w-4 text-primary-foreground" />
                         )}
                       </Link>
                     )

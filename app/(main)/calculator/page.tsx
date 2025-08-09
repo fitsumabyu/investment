@@ -12,19 +12,20 @@ import {
   Building,
   Percent,
   Calendar,
-  Target
+  Target,
+  Search
 } from "lucide-react"
 
 function CalculatorSkeleton() {
   return (
-    <div className="container-mobile">
-      <div className="animate-pulse space-y-6">
+    <div className="mobile-section">
+      <div className="animate-pulse space-y-4">
         <div className="h-8 bg-muted rounded-lg w-1/3"></div>
-        <div className="grid-cards">
+        <div className="mobile-grid md:grid-cards">
           {[...Array(3)].map((_, i) => (
-            <div key={i} className="card-modern p-6">
+            <div key={i} className="mobile-card p-4 md:p-6">
               <div className="h-6 bg-muted rounded w-1/4 mb-4"></div>
-              <div className="h-32 bg-muted rounded"></div>
+              <div className="h-32 bg-muted rounded-xl md:rounded-lg"></div>
             </div>
           ))}
         </div>
@@ -35,16 +36,23 @@ function CalculatorSkeleton() {
 
 async function CalculatorContent() {
   return (
-    <div className="container-mobile">
+    <div className="mobile-content">
       {/* Header */}
-      <div className="section-spacing">
+      <div className="mobile-section">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-hero">Financial Calculator</h1>
-            <p className="text-subtitle">Powerful tools for financial analysis and planning</p>
+            <h1 className="mobile-text-hero">Financial Calculator</h1>
+            <p className="mobile-text-subtitle">Powerful tools for financial analysis and planning</p>
           </div>
           <div className="flex items-center gap-2">
-            <Button variant="outline" size="sm" className="btn-secondary">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                placeholder="Search..."
+                className="mobile-input pl-8 w-48 md:w-64"
+              />
+            </div>
+            <Button variant="outline" size="sm" className="mobile-btn-secondary md:btn-secondary">
               <Calculator className="h-4 w-4 mr-2" />
               History
             </Button>
@@ -53,8 +61,8 @@ async function CalculatorContent() {
       </div>
 
       {/* Calculator Tools */}
-      <div className="section-spacing">
-        <div className="grid-cards">
+      <div className="mobile-section">
+        <div className="mobile-grid md:grid-cards">
           {/* ROI Calculator */}
           <Card className="card-elevated">
             <CardHeader>

@@ -155,54 +155,173 @@
     @apply bg-muted text-muted-foreground border border-border rounded-full px-3 py-1 text-sm font-medium;
   }
   
-  /* Modern Mobile Components */
+  /* Modern Mobile Components - Only apply on mobile */
   .container-mobile {
-    @apply px-4 py-6 space-y-6;
+    @apply px-4 py-6 space-y-6 md:px-6 md:py-8 md:space-y-8;
   }
   
   .card-mobile {
-    @apply card-modern p-6 space-y-4;
+    @apply card-modern p-6 space-y-4 md:p-6 md:space-y-4;
   }
   
   .button-mobile {
-    @apply btn-modern w-full justify-center;
+    @apply btn-modern w-full justify-center md:w-auto md:py-2 md:px-4;
   }
   
   .mobile-nav {
-    @apply fixed bottom-0 left-0 right-0 bg-background/95 backdrop-blur border-t border-border z-50;
+    @apply fixed bottom-0 left-0 right-0 bg-background/95 backdrop-blur-xl border-t border-border/50 z-50 px-2 py-2 md:hidden;
   }
   
   .mobile-sidebar {
-    @apply fixed inset-y-0 left-0 w-80 bg-background/95 backdrop-blur border-r border-border z-50 transform transition-transform duration-300;
+    @apply fixed inset-y-0 left-0 w-80 bg-background/95 backdrop-blur-xl border-r border-border/50 z-50 transform transition-transform duration-300 md:hidden;
   }
   
   .mobile-grid {
-    @apply grid gap-4;
+    @apply grid gap-3 md:gap-6 md:grid-cols-2 lg:grid-cols-3;
   }
   
   .mobile-heading {
-    @apply text-xl font-semibold mb-4;
+    @apply text-2xl font-bold mb-6 text-foreground md:text-3xl md:mb-8;
+  }
+  
+  .mobile-subheading {
+    @apply text-lg font-semibold mb-4 text-foreground md:text-xl md:mb-6;
   }
   
   .mobile-form {
-    @apply space-y-4;
+    @apply space-y-4 md:space-y-6;
   }
   
   .mobile-form-group {
-    @apply space-y-2;
+    @apply space-y-2 md:space-y-3;
   }
   
-  /* Modern Animations */
-  .animate-fade-in {
+  /* Mobile-specific card styles - Only on mobile */
+  .mobile-card {
+    @apply bg-card border border-border/50 rounded-2xl p-4 shadow-sm hover:shadow-md transition-all duration-200 md:card-modern md:rounded-lg md:p-6;
+  }
+  
+  .mobile-card-elevated {
+    @apply bg-card border border-border/50 rounded-2xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 md:card-elevated md:rounded-lg md:p-6;
+  }
+  
+  /* Mobile-specific button styles - Only on mobile */
+  .mobile-btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 rounded-xl px-6 py-3 font-semibold transition-all duration-200 shadow-sm hover:shadow-md w-full md:btn-modern md:w-auto md:rounded-lg md:px-4 md:py-2;
+  }
+  
+  .mobile-btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-xl px-6 py-3 font-semibold transition-all duration-200 border border-border w-full md:btn-secondary md:w-auto md:rounded-lg md:px-4 md:py-2;
+  }
+  
+  .mobile-btn-ghost {
+    @apply text-foreground hover:bg-accent rounded-xl px-6 py-3 font-semibold transition-all duration-200 w-full md:btn-ghost md:w-auto md:rounded-lg md:px-4 md:py-2;
+  }
+  
+  /* Mobile-specific input styles - Only on mobile */
+  .mobile-input {
+    @apply bg-background border border-border/50 rounded-xl px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 w-full md:input-modern md:rounded-lg md:px-3 md:py-2;
+  }
+  
+  /* Mobile-specific spacing - Only on mobile */
+  .mobile-section {
+    @apply space-y-4 px-4 py-4 md:section-spacing md:px-6 md:py-6;
+  }
+  
+  .mobile-content {
+    @apply space-y-4 pb-20 md:space-y-6 md:pb-0; /* Account for bottom nav only on mobile */
+  }
+  
+  /* Mobile-specific typography - Only on mobile */
+  .mobile-text-hero {
+    @apply text-3xl font-bold text-foreground md:text-hero;
+  }
+  
+  .mobile-text-title {
+    @apply text-xl font-semibold text-foreground md:text-title;
+  }
+  
+  .mobile-text-subtitle {
+    @apply text-lg font-medium text-foreground md:text-subtitle;
+  }
+  
+  .mobile-text-body {
+    @apply text-base text-foreground md:text-body;
+  }
+  
+  .mobile-text-caption {
+    @apply text-sm text-muted-foreground md:text-caption;
+  }
+  
+  /* Mobile-specific grid layouts - Only on mobile */
+  .mobile-grid-2 {
+    @apply grid grid-cols-2 gap-3 md:grid-cols-2 md:gap-4;
+  }
+  
+  .mobile-grid-3 {
+    @apply grid grid-cols-3 gap-3 md:grid-cols-3 md:gap-4;
+  }
+  
+  .mobile-grid-stats {
+    @apply grid grid-cols-2 gap-3 md:grid-stats md:gap-4;
+  }
+  
+  /* Mobile-specific status indicators - Only on mobile */
+  .mobile-status {
+    @apply rounded-full px-3 py-1.5 text-sm font-medium md:px-2 md:py-1;
+  }
+  
+  .mobile-status-success {
+    @apply mobile-status bg-success/10 text-success border border-success/20 md:status-success;
+  }
+  
+  .mobile-status-warning {
+    @apply mobile-status bg-warning/10 text-warning border border-warning/20 md:status-warning;
+  }
+  
+  .mobile-status-neutral {
+    @apply mobile-status bg-muted text-muted-foreground border border-border md:status-neutral;
+  }
+  
+  /* Mobile-specific animations - Same for all */
+  .mobile-fade-in {
     @apply animate-in fade-in duration-300;
   }
   
-  .animate-slide-in {
+  .mobile-slide-up {
     @apply animate-in slide-in-from-bottom-4 duration-300;
   }
   
-  .animate-scale-in {
+  .mobile-scale-in {
     @apply animate-in zoom-in-95 duration-200;
+  }
+  
+  /* Mobile-specific safe area handling - Only on mobile */
+  .mobile-safe-top {
+    @apply pt-4 md:pt-0;
+  }
+  
+  .mobile-safe-bottom {
+    @apply pb-4 md:pb-0;
+  }
+  
+  /* Mobile-specific scroll behavior - Same for all */
+  .mobile-scroll {
+    @apply overflow-y-auto scrollbar-modern;
+  }
+  
+  /* Mobile-specific backdrop blur - Same for all */
+  .mobile-backdrop {
+    @apply bg-background/95 backdrop-blur-xl;
+  }
+  
+  /* Mobile-specific shadows - Same for all */
+  .mobile-shadow {
+    @apply shadow-lg;
+  }
+  
+  .mobile-shadow-lg {
+    @apply shadow-xl;
   }
   
   /* Modern Scrollbar */

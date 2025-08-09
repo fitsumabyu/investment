@@ -18,13 +18,13 @@ import {
 
 function KnowledgeSkeleton() {
   return (
-    <div className="container-mobile">
-      <div className="animate-pulse space-y-6">
+    <div className="mobile-section">
+      <div className="animate-pulse space-y-4">
         <div className="h-8 bg-muted rounded-lg w-1/3"></div>
         <div className="h-12 bg-muted rounded-lg"></div>
-        <div className="grid-cards">
+        <div className="mobile-grid md:grid-cards">
           {[...Array(6)].map((_, i) => (
-            <div key={i} className="card-modern p-6">
+            <div key={i} className="mobile-card p-4 md:p-6">
               <div className="h-6 bg-muted rounded w-1/4 mb-4"></div>
               <div className="h-4 bg-muted rounded w-3/4 mb-2"></div>
               <div className="h-4 bg-muted rounded w-1/2"></div>
@@ -38,16 +38,23 @@ function KnowledgeSkeleton() {
 
 async function KnowledgeContent() {
   return (
-    <div className="container-mobile">
+    <div className="mobile-content">
       {/* Header */}
-      <div className="section-spacing">
+      <div className="mobile-section">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-hero">Knowledge Base</h1>
-            <p className="text-subtitle">Learn about investment strategies and financial management</p>
+            <h1 className="mobile-text-hero">Knowledge Base</h1>
+            <p className="mobile-text-subtitle">Learn about investment strategies and financial management</p>
           </div>
           <div className="flex items-center gap-2">
-            <Button variant="outline" size="sm" className="btn-secondary">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input 
+                placeholder="Search..."
+                className="mobile-input pl-8 w-48 md:w-64"
+              />
+            </div>
+            <Button variant="outline" size="sm" className="mobile-btn-secondary md:btn-secondary">
               <BookOpen className="h-4 w-4 mr-2" />
               Browse All
             </Button>
@@ -55,20 +62,9 @@ async function KnowledgeContent() {
         </div>
       </div>
 
-      {/* Search */}
-      <div className="section-spacing">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input 
-            placeholder="Search knowledge base..."
-            className="pl-10 h-12 text-lg"
-          />
-        </div>
-      </div>
-
       {/* Featured Content */}
-      <div className="section-spacing">
-        <div className="grid-cards">
+      <div className="mobile-section">
+        <div className="mobile-grid md:grid-cards">
           <Card className="card-elevated">
             <CardHeader>
               <div className="flex items-center justify-between">
