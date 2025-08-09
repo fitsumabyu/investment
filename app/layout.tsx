@@ -12,8 +12,63 @@ import { Toaster } from "@/components/ui/toaster"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "FinanceIQ - Investment Management Dashboard",
-  description: "All-in-one reporting, analysis & forecasting for investment property management",
+  title: "InvestmentApp - Australian Property Investment Management",
+  description: "Comprehensive Australian property investment management platform. Track properties, analyze returns, manage clients, and optimize your investment portfolio across Australia.",
+  keywords: [
+    "Australian property investment",
+    "investment management",
+    "property portfolio",
+    "real estate investment",
+    "Australian real estate",
+    "property management",
+    "investment calculator",
+    "property analysis",
+    "Sydney property",
+    "Melbourne property",
+    "Brisbane property",
+    "Perth property",
+    "Adelaide property",
+    "investment advisor",
+    "property ROI",
+    "rental yield",
+    "investment strategy"
+  ],
+  authors: [{ name: "InvestmentApp Team" }],
+  creator: "InvestmentApp",
+  publisher: "InvestmentApp",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL("https://investmentapp.com.au"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "InvestmentApp - Australian Property Investment Management",
+    description: "Comprehensive Australian property investment management platform. Track properties, analyze returns, manage clients, and optimize your investment portfolio across Australia.",
+    url: "https://investmentapp.com.au",
+    siteName: "InvestmentApp",
+    locale: "en_AU",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "InvestmentApp - Australian Property Investment Management",
+    description: "Comprehensive Australian property investment management platform for tracking and optimizing your investment portfolio.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 }
 
 export default function RootLayout({
